@@ -74,17 +74,16 @@
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--dorado-metalizado);
+            height: 45px;
+            width: auto;
+            object-fit: contain;
             transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.4));
         }
 
         .logo-img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.6));
         }
 
         .navbar-brand {
@@ -459,11 +458,10 @@
         }
 
         .footer-logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--dorado-metalizado);
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
         }
 
         .footer-title {
