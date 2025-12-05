@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AIDO - Agencia de desarrollo web y soluciones con inteligencia artificial. Diseñamos ecosistemas digitales inteligentes.">
+    <title>AIDO - Agencia Digital con IA</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --negro-grafito: #0D0D0D;
+            --negro-sonido: #000000;
+            --rojo-neon: #FF1A1A;
+            --rojo-luminoso: #FF0000;
+            --dorado-metalizado: #D4AF37;
+            --dorado-claro: #E2C675;
+            --gris-oscuro: #1A1A1A;
+            --gris-medio: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--negro-grafito);
+            color: #E0E0E0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--dorado-metalizado);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: 2px;
+        }
+
+        /* Navbar Premium */
+        .navbar-premium {
+            background: linear-gradient(180deg, var(--negro-sonido) 0%, var(--negro-grafito) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--rojo-neon);
+            box-shadow: 0 4px 30px rgba(255, 26, 26, 0.2);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-premium.scrolled {
+            background: rgba(13, 13, 13, 0.95);
+            box-shadow: 0 8px 40px rgba(255, 26, 26, 0.4);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--dorado-metalizado);
+            transition: all 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--dorado-metalizado) !important;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            letter-spacing: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+        }
+
+        .nav-link {
+            color: #E0E0E0 !important;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 0 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rojo-neon), var(--rojo-luminoso));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--rojo-neon) !important;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-premium {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--negro-sonido) 0%, var(--negro-grafito) 100%);
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 26, 26, 0.1) 0%, rgba(13, 13, 13, 0.8) 70%);
+            z-index: 1;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--dorado-metalizado);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-50px) translateX(100px); }
+            75% { transform: translateY(-150px) translateX(25px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--dorado-metalizado), var(--dorado-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4)); }
+            to { filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #E0E0E0;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-subtitle .highlight {
+            color: var(--rojo-neon);
+            font-weight: 600;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--rojo-neon), var(--rojo-luminoso));
+            border: none;
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(255, 26, 26, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-premium:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 60px rgba(255, 26, 26, 0.8);
+        }
+
+        /* Secciones */
+        section {
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rojo-neon), var(--rojo-luminoso));
+        }
+
+        /* Cards Servicios */
+        .card-premium {
+            background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito));
+            border: 1px solid rgba(255, 26, 26, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 26, 26, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .card-premium:hover::before {
+            left: 100%;
+        }
+
+        .card-premium:hover {
+            transform: translateY(-15px);
+            border-color: var(--rojo-neon);
+            box-shadow: 0 20px 60px rgba(255, 26, 26, 0.4);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: var(--rojo-neon);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-premium:hover .card-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--dorado-metalizado);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dorado-metalizado);
+        }
+
+        .card-text {
+            color: #B0B0B0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contacto */
+        .contact-card {
+            background: linear-gradient(135deg, var(--negro-grafito), var(--gris-oscuro));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--rojo-neon);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 26, 26, 0.3);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--rojo-neon);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--rojo-neon);
+        }
+
+        /* Metodología */
+        .step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 40px rgba(255, 26, 26, 0.3);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--rojo-neon), var(--rojo-luminoso));
+            color: #FFFFFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(255, 26, 26, 0.5);
+        }
+
+        .step-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: #B0B0B0;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer-premium {
+            background: linear-gradient(180deg, var(--gris-oscuro) 0%, var(--negro-sonido) 100%);
+            border-top: 2px solid var(--rojo-neon);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dorado-metalizado), transparent);
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--dorado-metalizado);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dorado-metalizado);
+        }
+
+        .footer-link {
+            color: #B0B0B0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-link:hover {
+            color: var(--rojo-neon);
+            padding-left: 10px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito));
+            border: 1px solid var(--rojo-neon);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            color: var(--rojo-neon);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--rojo-neon), var(--rojo-luminoso));
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(255, 26, 26, 0.6);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 26, 26, 0.2);
+            color: #808080;
+        }
+
+        /* Animaciones */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            .nav-link { margin: 0.5rem 0; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Background (Siempre activo) -->
+    <audio id="bgAudio" autoplay loop>
+        <source src="https://www.soundjay.com/mechanical/sounds/mechanical-gear-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navbar Premium -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="#hero" data-sound="click">
+                <img src="asset/logo.jpeg" alt="Logo AIDO" class="logo-img">
+                <span>AIDO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hero" data-sound="hover">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios" data-sound="hover">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quienes-somos.html" data-sound="hover">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto" data-sound="hover">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-premium">
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="asset/banner.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <!-- Partículas -->
+        <div class="particles">
+            <div class="particle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 50%; left: 50%; animation-delay: 4s;"></div>
+            <div class="particle" style="top: 70%; left: 30%; animation-delay: 6s;"></div>
+            <div class="particle" style="top: 20%; left: 60%; animation-delay: 3s;"></div>
+            <div class="particle" style="top: 80%; left: 70%; animation-delay: 5s;"></div>
+        </div>
+
+        <div class="hero-content container">
+            <h1 class="hero-title fade-in-up">AIDO</h1>
+            <p class="hero-subtitle fade-in-up delay-1">
+                Transformamos ideas en <span class="highlight">soluciones digitales inteligentes</span>
+            </p>
+            <a href="#servicios" class="btn btn-premium fade-in-up delay-2" data-sound="click">
+                <span style="position: relative; z-index: 1;">Descubre más</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Nuestros Servicios -->
+    <section id="servicios" style="background: linear-gradient(135deg, var(--negro-grafito), var(--gris-oscuro));">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Nuestros Servicios</h2>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 fade-in-up delay-1">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-code-slash card-icon"></i>
+                        <h3 class="card-title">Diseño Web de Vanguardia</h3>
+                        <p class="card-text">
+                            Creamos sitios web y aplicaciones que combinan estética moderna con funcionalidad estratégica. Diseños responsive que convierten visitantes en clientes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-2">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-graph-up-arrow card-icon"></i>
+                        <h3 class="card-title">Análisis de Datos & BI</h3>
+                        <p class="card-text">
+                            Implementamos dashboards inteligentes y sistemas de analytics que transforman datos en decisiones estratégicas. Visualización clara, insights accionables.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-3">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-robot card-icon"></i>
+                        <h3 class="card-title">Soluciones con IA</h3>
+                        <p class="card-text">
+                            Integramos inteligencia artificial en tus procesos: chatbots, automatizaciones, machine learning y análisis predictivo para escalar tu negocio.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-1">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-cart-check card-icon"></i>
+                        <h3 class="card-title">E-commerce & Plataformas</h3>
+                        <p class="card-text">
+                            Desarrollamos tiendas online completas, sistemas de gestión y plataformas a medida. Integraciones con medios de pago, inventario y logística.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-2">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-lightning-charge card-icon"></i>
+                        <h3 class="card-title">Automatización de Procesos</h3>
+                        <p class="card-text">
+                            Conectamos tus herramientas y automatizamos flujos de trabajo con n8n, APIs y webhooks. Ahorra tiempo y elimina tareas repetitivas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-3">
+                    <div class="card-premium" data-sound="card">
+                        <i class="bi bi-cloud-upload card-icon"></i>
+                        <h3 class="card-title">Hosting & Mantenimiento</h3>
+                        <p class="card-text">
+                            Gestionamos tu infraestructura cloud, backups automáticos, actualizaciones de seguridad y soporte técnico continuo. Tu sitio siempre online.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" style="background: var(--negro-grafito);">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Contacto</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 fade-in-up delay-1">
+                    <div class="contact-card text-center" data-sound="hover">
+                        <i class="bi bi-envelope-fill"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:contacto@aido.com">contacto@aido.com</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-2">
+                    <div class="contact-card text-center" data-sound="hover">
+                        <i class="bi bi-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/5491234567890" target="_blank">+54 9 11 2345-6789</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fade-in-up delay-3">
+                    <div class="contact-card text-center" data-sound="hover">
+                        <i class="bi bi-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <a href="https://linkedin.com/company/aido" target="_blank">linkedin.com/company/aido</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 fade-in-up">
+                    <div class="text-center p-5" style="background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito)); border-radius: 20px; border: 2px solid var(--dorado-metalizado);">
+                        <p style="font-size: 1.3rem; color: #E0E0E0; margin: 0;">
+                            ¿Tienes un proyecto en mente? <span style="color: var(--dorado-metalizado); font-weight: 600;">Hablemos</span> y transformemos tus ideas en realidad digital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Metodología -->
+    <section id="metodologia" style="background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito));">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Nuestra Metodología</h2>
+
+            <p class="text-center mb-5 fade-in-up" style="font-size: 1.2rem; color: #E0E0E0; max-width: 800px; margin: 0 auto 4rem;">
+                Trabajamos con un proceso probado que garantiza resultados excepcionales en cada etapa del proyecto.
+            </p>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="step fade-in-up delay-1" data-sound="hover">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Descubrimiento</h4>
+                            <p>Analizamos tu negocio, objetivos y audiencia. Definimos KPIs y métricas de éxito desde el día uno.</p>
+                        </div>
+                    </div>
+
+                    <div class="step fade-in-up delay-2" data-sound="hover">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Estrategia</h4>
+                            <p>Diseñamos la arquitectura técnica y el plan de implementación. Priorizamos funcionalidades por impacto.</p>
+                        </div>
+                    </div>
+
+                    <div class="step fade-in-up delay-3" data-sound="hover">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Desarrollo</h4>
+                            <p>Codificamos con las mejores prácticas, código limpio y escalable. Implementamos CI/CD para entregas continuas.</p>
+                        </div>
+                    </div>
+
+                    <div class="step fade-in-up delay-1" data-sound="hover">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Optimización</h4>
+                            <p>Probamos, medimos y optimizamos. Cada mejora está respaldada por datos reales de usuarios.</p>
+                        </div>
+                    </div>
+
+                    <div class="step fade-in-up delay-2" data-sound="hover">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Evolución</h4>
+                            <p>Tu proyecto crece contigo. Mantenimiento proactivo, nuevas features y escalabilidad garantizada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section style="background: var(--negro-grafito); padding: 100px 0;">
+        <div class="container">
+            <div class="text-center p-5 fade-in-up" style="background: linear-gradient(135deg, var(--gris-oscuro), var(--negro-grafito)); border-radius: 20px; border: 2px solid var(--rojo-neon); max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.5rem; color: #E0E0E0; margin-bottom: 2rem;">
+                    ¿Listo para llevar tu negocio al siguiente nivel digital?
+                </p>
+                <a href="#contacto" class="btn btn-premium" data-sound="click">
+                    <span style="position: relative; z-index: 1;">Hablemos de tu proyecto</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="footer-premium">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="asset/logo.jpeg" alt="Logo AIDO" class="footer-logo-img">
+                        <h3 class="footer-title mb-0">AIDO</h3>
+                    </div>
+                    <p style="color: #B0B0B0; font-size: 1.1rem; line-height: 1.8;">
+                        Transformamos ideas en experiencias digitales excepcionales con tecnología de vanguardia.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon" data-sound="click"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon" data-sound="click"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon" data-sound="click"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon" data-sound="click"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Empresa</h5>
+                    <a href="quienes-somos.html" class="footer-link" data-sound="hover">Sobre Nosotros</a>
+                    <a href="#servicios" class="footer-link" data-sound="hover">Servicios</a>
+                    <a href="#metodologia" class="footer-link" data-sound="hover">Metodología</a>
+                    <a href="#contacto" class="footer-link" data-sound="hover">Contacto</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Recursos</h5>
+                    <a href="#" class="footer-link" data-sound="hover">Blog</a>
+                    <a href="#" class="footer-link" data-sound="hover">Documentación</a>
+                    <a href="#" class="footer-link" data-sound="hover">Tutoriales</a>
+                    <a href="#" class="footer-link" data-sound="hover">API</a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="footer-title">Contacto</h5>
+                    <p style="color: #B0B0B0; font-size: 1.1rem;">
+                        <i class="bi bi-envelope-fill" style="color: var(--rojo-neon);"></i>
+                        contacto@aido.com
+                    </p>
+                    <p style="color: #B0B0B0; font-size: 1.1rem;">
+                        <i class="bi bi-telephone-fill" style="color: var(--rojo-neon);"></i>
+                        +54 9 11 2345-6789
+                    </p>
+                    <p style="color: #B0B0B0; font-size: 1.1rem;">
+                        <i class="bi bi-geo-alt-fill" style="color: var(--rojo-neon);"></i>
+                        Buenos Aires, Argentina
+                    </p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 AIDO - Agencia Digital con Inteligencia Artificial. Todos los derechos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Diseñamos el futuro digital de tu negocio</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript con Sistema de Sonido -->
+    <script>
+        // Sistema de Sonido (Siempre activo)
+        const sounds = {
+            click: new Audio('https://www.soundjay.com/button/sounds/button-09.mp3'),
+            hover: new Audio('https://www.soundjay.com/button/sounds/button-16.mp3'),
+            card: new Audio('https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3')
+        };
+
+        const bgAudio = document.getElementById('bgAudio');
+        bgAudio.volume = 0.2; // Volumen bajo para fondo
+
+        // Iniciar audio de fondo automáticamente
+        document.addEventListener('DOMContentLoaded', () => {
+            bgAudio.play().catch(e => {
+                // Si el navegador bloquea autoplay, intentar al primer click
+                document.body.addEventListener('click', () => {
+                    bgAudio.play().catch(() => {});
+                }, { once: true });
+            });
+        });
+
+        // Eventos de sonido
+        document.querySelectorAll('[data-sound]').forEach(element => {
+            element.addEventListener('click', function(e) {
+                if (this.dataset.sound) {
+                    const sound = sounds[this.dataset.sound];
+                    if (sound) {
+                        sound.currentTime = 0;
+                        sound.volume = 0.5;
+                        sound.play().catch(() => {});
+                    }
+                }
+            });
+
+            if (element.dataset.sound === 'hover') {
+                element.addEventListener('mouseenter', function() {
+                    const sound = sounds.hover;
+                    if (sound) {
+                        sound.currentTime = 0;
+                        sound.volume = 0.2;
+                        sound.play().catch(() => {});
+                    }
+                });
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-premium');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer para animaciones
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Efecto de partículas siguiendo cursor
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                const speed = (index + 1) * 0.002;
+                const x = (e.clientX * speed);
+                const y = (e.clientY * speed);
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        console.log('%c🚀 AIDO - Premium Experience', 'color: #D4AF37; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);');
+    </script>
+</body>
+</html>
